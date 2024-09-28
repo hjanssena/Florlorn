@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public abstract class Host : MonoBehaviour
 {
     [SerializeField] private float lifeDuration;
-    [SerializeField] private float lifeStart;
+    private float lifeStart;
+    protected Rigidbody2D rb;
+    protected BoxCollider2D coll;
+
+    //Sounds
+    [Header("Sound")]
+    //[SerializeField] AudioClip stepSound;
+    //[SerializeField] AudioClip jumpSound;
+    protected AudioSource audioPlayer;
+    protected SpriteRenderer sprite;
 
     protected abstract void Movement();
 
@@ -17,9 +27,16 @@ public abstract class Host : MonoBehaviour
         }
     }
 
+    public void SetAsHost()
+    {
+        GetComponent<Host>().enabled = true;
+        GetComponent<Animal>().enabled = false;
+        lifeStart = Time.time;
+    }
+
     public void Die()
     {
-        gameObject.transform.SetParent(null);
+        GameObject.FindGameObjectWithTag("Player").transform.parent = null;
         gameObject.SetActive(false);
     }
 }
