@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4487874599219506896}
   - component: {fileID: 8276556376567443633}
   - component: {fileID: 1976481525904109162}
-  - component: {fileID: 5407860042302598054}
   - component: {fileID: 367646757943008176}
   - component: {fileID: 2694383930352746757}
+  - component: {fileID: 1969893066848942098}
   m_Layer: 0
-  m_Name: Animal
+  m_Name: Flying
   m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,33 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5407860042302598054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796564307718651319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2e181873d1d59068ae1cdab18d354c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeDuration: 100
-  moveSpeed: 7
-  maxSpeed: 5
-  maxAirSpeed: 5
-  airMovementPenalty: 1
-  gravity: 12
-  maxFallSpeed: 5
-  jumpStartSpeed: 6
-  jumpSustainedSpeed: 1
-  maxJumpForce: 2
-  jumpBuffer: 1
-  raycastLateralLenght: 0.1
-  raycastLateralOffset: 0.1
-  raycastVerticalLenght: 0.5
-  raycastVerticalOffset: 0.1
 --- !u!114 &367646757943008176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,3 +208,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1969893066848942098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796564307718651319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19dccc8032851fca0a3eec26261ffb97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeDuration: 100
+  yForce: 5
+  xForce: 5
