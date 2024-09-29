@@ -14,11 +14,15 @@ public class Player : MonoBehaviour
     [SerializeField] private bool onStasis;
     [SerializeField] private bool migrating;
     public bool dead;
+    protected ProgressBar progressBar;
+
+
 
     CircleCollider2D coll;
 
     void Start()
     {
+        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         coll = GetComponent<CircleCollider2D>();
         Initiate();
     }
@@ -65,10 +69,12 @@ public class Player : MonoBehaviour
         }
         onStasis = true;
         stasisStart = Time.time;
+        progressBar.SetMax(stasisDuration);
     }
 
     void AimSkillShot()
     {
+        progressBar.ChangeProgress(Time.time - stasisStart);
         if (stasisStart + stasisDuration <= Time.time || Input.GetAxis("Fire") > 0)
         {
             Fire();

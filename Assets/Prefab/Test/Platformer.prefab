@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2694383930352746757}
   - component: {fileID: -2960147251467285791}
   - component: {fileID: 2985158555016715353}
+  - component: {fileID: 5838734379190094883}
   m_Layer: 7
   m_Name: Platformer
   m_TagString: Animal
@@ -209,3 +210,24 @@ MonoBehaviour:
   raycastFloorOffset: 0.6
   raycastWallLength: 0.6
   raycastWallOffset: 0.5
+--- !u!95 &5838734379190094883
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796564307718651319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

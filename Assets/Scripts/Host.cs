@@ -63,6 +63,9 @@ public abstract class Host : MonoBehaviour
     protected SpriteRenderer sprite;
     protected ProgressBar progressBar;
 
+    protected Animator animator;
+    protected SpriteRenderer sr;
+
     protected abstract void Movement();
 
     protected void CheckLifeTime()
@@ -96,6 +99,8 @@ public abstract class Host : MonoBehaviour
 
     protected void StopMovement() //When player is not pressing horizontal axis, apply force to stop the movement
     {
+        animator.SetBool("isRunning", false);
+
         float direction = 0;
         if (transform.position.x > lastPosition.x)
         {

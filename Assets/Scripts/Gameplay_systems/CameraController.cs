@@ -149,9 +149,8 @@ public class CameraController : MonoBehaviour
                 wantedPosition.z = -10;
                 break;
             case cameraMode.locked:
-                wantedPosition = target.transform.position;
                 wantedPosition.x = wantedX;
-                wantedPosition.y += wantedY;
+                wantedPosition.y = wantedY;
                 wantedPosition.z = -10;
                 break;
         }

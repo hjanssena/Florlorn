@@ -12,6 +12,8 @@ public class Aerial : Animal
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         startingPosition = transform.position;
     }
 
@@ -25,9 +27,12 @@ public class Aerial : Animal
     {
         wallOnLeft = CheckLeftWalls();
         wallOnRight = CheckRightWalls();
+        spikeOnLeft = CheckLeftSpikes();
+        spikeOnRight = CheckRightSpikes();
         floorOnLeft = true;
         floorOnRight = true;
 
+        animator.SetBool("isRunning", false);
         SetPath();
         Move();
         VerticalOscilation();

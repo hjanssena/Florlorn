@@ -8,6 +8,8 @@ public class Running : Host
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         Destroy(rb);
@@ -74,10 +76,27 @@ public class Running : Host
         lastPosition = transform.position;
         transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
 
+        if (!onFloor)
+        {
+            animator.SetBool("isJumping", true);
+        }
+        else
+        {
+            animator.SetBool("isJumping", false);
+        }
     }
 
     protected override void Movement()
     {
+        if (moveDirection > 0)
+        {
+            sr.flipX = false;
+        }
+        else if (moveDirection < 0)
+        {
+            sr.flipX = true;
+        }
+
         if (!onFloor) //Movement while on air
         {
             if (moveDirection > 0)

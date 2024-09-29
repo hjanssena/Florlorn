@@ -58,7 +58,7 @@ public class CheckpointManager : MonoBehaviour
             animals[i].transform.position = animalInitialPositions[i];
             animals[i].GetComponent<Host>().enabled = false;
             animals[i].GetComponent<Animal>().enabled = true;
-            animals[i].GetComponent<Animal>().movementDuration = 0;
+            animals[i].GetComponent<Animal>().SetMovDuration(0);
             animals[i].AddComponent<Rigidbody2D>();
             animals[i].SetActive(false);
         }
