@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.29650402, y: -2.88, z: 0}
-  m_LocalScale: {x: 1.05, y: 1.05, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -175,10 +175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMovement: 1
   maxDistanceFromOrigin: 5
-  raycastFloorLenght: 0.25
-  raycastFloorOffset: 0.4
-  raycastWallLength: 0.4
-  raycastWallOffset: 0.2
+  movDirection: 0
+  movementDuration: 0
+  raycastFloorLenght: 0.26
+  raycastFloorOffset: 0.41
+  raycastWallLength: 0.41
+  raycastWallOffset: 0.21
 --- !u!95 &-1458768782041984195
 Animator:
   serializedVersion: 5
@@ -226,7 +228,7 @@ MonoBehaviour:
   maxJumpForce: 5
   jumpForceApplied: 0
   jumpBuffer: 1
-  raycastLateralLenght: 0.375
-  raycastLateralOffset: 0.2
-  raycastVerticalLenght: 0.215
-  raycastVerticalOffset: 0.21
+  raycastLateralLenght: 0.385
+  raycastLateralOffset: 0.21
+  raycastVerticalLenght: 0.225
+  raycastVerticalOffset: 0.22
