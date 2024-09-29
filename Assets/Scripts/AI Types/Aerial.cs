@@ -8,19 +8,31 @@ public class Aerial : Animal
     [SerializeField] float yPath;
     [SerializeField][Range(0f, 1)] float movementFactor;
     [SerializeField] float period = 2f;
+    Rigidbody2D rb;
 
     private void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         startingPosition = transform.position;
+    }
+
+    private void OnEnable()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
     }
 
     void Update()
     {
         wallOnLeft = CheckLeftWalls();
         wallOnRight = CheckRightWalls();
+        spikeOnLeft = CheckLeftSpikes();
+        spikeOnRight = CheckRightSpikes();
         floorOnLeft = true;
         floorOnRight = true;
 
+        animator.SetBool("isRunning", false);
         SetPath();
         Move();
         VerticalOscilation();
