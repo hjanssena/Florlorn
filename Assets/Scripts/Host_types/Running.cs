@@ -118,7 +118,7 @@ public class Running : Host
             {
                 if (currentXSpeed < 0)
                 {
-                    currentXSpeed += moveSpeed * 1.5f * moveDirection * delta;
+                    currentXSpeed += moveSpeed * stopMoveDrag * moveDirection * delta;
                 }
                 else if (currentXSpeed < maxSpeed)
                 {
@@ -129,7 +129,7 @@ public class Running : Host
             {
                 if (currentXSpeed > 0)
                 {
-                    currentXSpeed += moveSpeed * 1.5f * moveDirection * delta;
+                    currentXSpeed += moveSpeed * stopMoveDrag * moveDirection * delta;
                 }
                 else if (currentXSpeed > -maxSpeed)
                 {

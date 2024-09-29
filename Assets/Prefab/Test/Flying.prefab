@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4487874599219506896}
   - component: {fileID: 8276556376567443633}
   - component: {fileID: 1976481525904109162}
-  - component: {fileID: 367646757943008176}
   - component: {fileID: 2694383930352746757}
   - component: {fileID: 1969893066848942098}
-  m_Layer: 0
+  - component: {fileID: 8289050549595139291}
+  m_Layer: 7
   m_Name: Flying
   m_TagString: Animal
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -151,18 +151,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &367646757943008176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796564307718651319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f14f22da035c224480a6e6b8b6e456c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2694383930352746757
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,11 +203,46 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8796564307718651319}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19dccc8032851fca0a3eec26261ffb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifeDuration: 100
-  yForce: 5
-  xForce: 5
+  moveSpeed: 4
+  currentXSpeed: 0
+  maxSpeed: 6
+  maxAirSpeed: 5
+  airMovementPenalty: 1
+  stopMoveDrag: 3
+  gravity: 3
+  maxFallSpeed: 2.5
+  jumpStartSpeed: 1.5
+  jumpSustainedSpeed: 0.5
+  maxJumpForce: 50
+  jumpBuffer: 0
+  raycastLateralLenght: 0.5
+  raycastLateralOffset: 0.1
+  raycastVerticalLenght: 0.5
+  raycastVerticalOffset: 0.1
+--- !u!114 &8289050549595139291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796564307718651319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7918bd07df44bc42a8255b9efa96610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xMovement: 1
+  maxDistanceFromOrigin: 5
+  raycastFloorLenght: 0
+  raycastFloorOffset: 0
+  raycastWallLength: 0.6
+  raycastWallOffset: 0.5
+  yPath: 0.5
+  movementFactor: 0.1
+  period: 1.5

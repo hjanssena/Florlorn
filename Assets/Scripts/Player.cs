@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         }
         else if(migrating)
         {
-            //Lose logic here, respawn to checkpoint
+            //Respawn to checkpoint, todo
         }
     }
 }

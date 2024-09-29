@@ -106,7 +106,7 @@ public class Platforming : Host
             {
                 if (currentXSpeed < 0)
                 {
-                    currentXSpeed += moveSpeed * 1.5f * xAxis * delta;
+                    currentXSpeed += moveSpeed * stopMoveDrag * xAxis * delta;
                 }
                 else if (currentXSpeed < maxSpeed)
                 {
@@ -117,7 +117,7 @@ public class Platforming : Host
             {
                 if (currentXSpeed > 0)
                 {
-                    currentXSpeed += moveSpeed * 1.5f * xAxis * delta;
+                    currentXSpeed += moveSpeed * stopMoveDrag * xAxis * delta;
                 }
                 else if (currentXSpeed > -maxSpeed)
                 {

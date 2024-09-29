@@ -15,10 +15,11 @@ public abstract class Host : MonoBehaviour
     //Movement on x
     [Header("Movement on x")]
     [SerializeField] protected float moveSpeed;
-    protected float currentXSpeed;
+    [SerializeField] protected float currentXSpeed;
     [SerializeField] protected float maxSpeed;
     [SerializeField] protected float maxAirSpeed;
     [SerializeField] protected float airMovementPenalty;
+    [SerializeField] protected float stopMoveDrag;
     protected bool adjustedToFloor;
     protected Vector2 lastPosition;
 
@@ -96,27 +97,27 @@ public abstract class Host : MonoBehaviour
         {
             direction = -1;
         }
-
+            
         if (onFloor)
         {
-            if (currentXSpeed <= .05f && currentXSpeed >= -.05f)
+            if (currentXSpeed <= .02f && currentXSpeed >= -.06f)
             {
                 currentXSpeed = 0;
             }
             else
             {
-                currentXSpeed -= moveSpeed * 1.5f * direction * delta;
+                currentXSpeed -= stopMoveDrag * 2 * direction * delta;
             }
         }
         else if (!onFloor)
         {
-            if (currentXSpeed <= .05f && currentXSpeed >= -.05f)
+            if (currentXSpeed <= .02f && currentXSpeed >= -.06f)
             {
                 currentXSpeed = 0;
             }
             else
             {
-                currentXSpeed -= moveSpeed * airMovementPenalty * direction * delta;
+                currentXSpeed -= stopMoveDrag * 2 * airMovementPenalty * direction * delta;
             }
         }
     }
@@ -245,9 +246,9 @@ public abstract class Host : MonoBehaviour
         Vector2 rightRayPos = new Vector2(transform.position.x + raycastVerticalOffset, transform.position.y);
 
         //Centro, izquierda y derecha
-        RaycastHit2D hitC = Physics2D.Raycast(centerRayPos, Vector2.down, raycastVerticalLenght + 0.5f, mask);
-        RaycastHit2D hitL = Physics2D.Raycast(leftRayPos, Vector2.down, raycastVerticalLenght + 0.5f, mask);
-        RaycastHit2D hitR = Physics2D.Raycast(rightRayPos, Vector2.down, raycastVerticalLenght + 0.5f, mask);
+        RaycastHit2D hitC = Physics2D.Raycast(centerRayPos, Vector2.down, raycastVerticalLenght + 0.05f, mask);
+        RaycastHit2D hitL = Physics2D.Raycast(leftRayPos, Vector2.down, raycastVerticalLenght + 0.05f, mask);
+        RaycastHit2D hitR = Physics2D.Raycast(rightRayPos, Vector2.down, raycastVerticalLenght + 0.05f, mask);
 
         if (hitC || hitL || hitR)
         {
