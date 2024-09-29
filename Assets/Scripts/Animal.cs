@@ -10,7 +10,7 @@ public abstract class Animal : MonoBehaviour
     [SerializeField] protected float maxDistanceFromOrigin;
     protected Vector2 startingPosition;
     protected int movDirection;
-    protected float movementDuration;
+    public float movementDuration;
     protected float movementStart;
 
     //Raycast Positions for floor detection
@@ -30,6 +30,7 @@ public abstract class Animal : MonoBehaviour
 
     protected void Move()
     {
+        
         transform.position = new Vector3(transform.position.x + (movDirection * Time.deltaTime * xMovement), transform.position.y, transform.position.z);
     }
 

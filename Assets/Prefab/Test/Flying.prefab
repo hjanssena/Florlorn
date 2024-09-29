@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5743759020986592005}
   - component: {fileID: 4487874599219506896}
-  - component: {fileID: 8276556376567443633}
   - component: {fileID: 1976481525904109162}
   - component: {fileID: 2694383930352746757}
   - component: {fileID: 1969893066848942098}
@@ -89,41 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &8276556376567443633
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8796564307718651319}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &1976481525904109162
 Rigidbody2D:
   serializedVersion: 4
@@ -220,6 +184,7 @@ MonoBehaviour:
   jumpStartSpeed: 1.5
   jumpSustainedSpeed: 0.5
   maxJumpForce: 50
+  jumpForceApplied: 0
   jumpBuffer: 0
   raycastLateralLenght: 0.5
   raycastLateralOffset: 0.1
@@ -239,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xMovement: 1
   maxDistanceFromOrigin: 5
+  movementDuration: 0
   raycastFloorLenght: 0
   raycastFloorOffset: 0
   raycastWallLength: 0.6

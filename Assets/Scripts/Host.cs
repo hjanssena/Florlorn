@@ -30,7 +30,7 @@ public abstract class Host : MonoBehaviour
     [SerializeField] protected float jumpStartSpeed;
     [SerializeField] protected float jumpSustainedSpeed;
     [SerializeField] protected float maxJumpForce;
-    protected float jumpForceApplied;
+    [SerializeField] protected float jumpForceApplied;
     protected float currentYSpeed;
     protected bool jumping;
     protected bool jumpInUse = false;
@@ -61,14 +61,16 @@ public abstract class Host : MonoBehaviour
     //[SerializeField] AudioClip jumpSound;
     protected AudioSource audioPlayer;
     protected SpriteRenderer sprite;
+    protected ProgressBar progressBar;
 
     protected abstract void Movement();
 
     protected void CheckLifeTime()
     {
+        progressBar.ChangeProgress(lifeDuration + lifeStart - Time.time);
         if (lifeDuration + lifeStart < Time.time)
         {
-            Die();
+            ExpireHost();
         }
     }
 
@@ -76,15 +78,21 @@ public abstract class Host : MonoBehaviour
     {
         GetComponent<Host>().enabled = true;
         GetComponent<Animal>().enabled = false;
+        progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
+        progressBar.SetMax(lifeDuration);
         lifeStart = Time.time;
     }
 
-    public void Die()
+    public void ExpireHost()
     {
         GameObject.FindGameObjectWithTag("Player").transform.parent = null;
         gameObject.SetActive(false);
     }
 
+    public void Death()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().dead = true;
+    }
 
     protected void StopMovement() //When player is not pressing horizontal axis, apply force to stop the movement
     {
@@ -150,10 +158,18 @@ public abstract class Host : MonoBehaviour
             jumpBuffered = false;
         }
         //Aditional force if player holds jump axis
-        if (jumping && maxJumpForce > jumpForceApplied + (jumpSustainedSpeed * delta))
+        if (jumping && maxJumpForce > jumpForceApplied)
         {
-            jumpForceApplied += jumpSustainedSpeed * delta;
-            currentYSpeed += jumpSustainedSpeed * delta;
+            if (maxJumpForce < jumpForceApplied + jumpSustainedSpeed * delta)
+            {
+                jumpForceApplied += maxJumpForce - jumpForceApplied + .0001f;
+                currentYSpeed += maxJumpForce - jumpForceApplied + .0001f;
+            }
+            else
+            {
+                jumpForceApplied += jumpSustainedSpeed * delta;
+                currentYSpeed += jumpSustainedSpeed * delta;
+            }
         }
         //Add remaining force if player is still holding jump
         else if (jumping && maxJumpForce > jumpForceApplied)
@@ -188,6 +204,7 @@ public abstract class Host : MonoBehaviour
             currentYSpeed = 0;
         }
 
+        transform.rotation = Quaternion.identity;
     }
 
     //WALL AND FLOOR DETECTION FUNCTIONS
@@ -366,7 +383,7 @@ public abstract class Host : MonoBehaviour
 
     protected void AdjustToWall(RaycastHit2D hit, int dir)
     {
-        transform.position = new Vector2(hit.point.x + .055f * dir, transform.position.y);
+        transform.position = new Vector2(hit.point.x + raycastLateralLenght * dir, transform.position.y);
     }
 
     protected bool CheckCeiling()

@@ -8,10 +8,17 @@ public class Aerial : Animal
     [SerializeField] float yPath;
     [SerializeField][Range(0f, 1)] float movementFactor;
     [SerializeField] float period = 2f;
+    Rigidbody2D rb;
 
     private void Start()
     {
         startingPosition = transform.position;
+    }
+
+    private void OnEnable()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
     }
 
     void Update()

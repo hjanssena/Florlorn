@@ -13,15 +13,23 @@ public class Player : MonoBehaviour
 
     [SerializeField] private bool onStasis;
     [SerializeField] private bool migrating;
+    public bool dead;
 
     CircleCollider2D coll;
 
     void Start()
     {
         coll = GetComponent<CircleCollider2D>();
+        Initiate();
+    }
+
+    public void Initiate()
+    {
         stasisStart = float.MaxValue;
+        transform.parent = null;
         onStasis = true;
         migrating = false;
+        dead = false;
     }
 
     void Update()
@@ -33,6 +41,10 @@ public class Player : MonoBehaviour
         else if (migrating)
         {
             Migrating();
+            if (CheckShotCollision())
+            {
+                dead = true;
+            }
         }
         else
         {
@@ -49,7 +61,7 @@ public class Player : MonoBehaviour
     {
         if (transform.parent != null)
         {
-            transform.parent.GetComponent<Host>().Die();
+            transform.parent.GetComponent<Host>().ExpireHost();
         }
         onStasis = true;
         stasisStart = Time.time;
@@ -97,16 +109,33 @@ public class Player : MonoBehaviour
         }
     }
 
+    protected bool CheckShotCollision()
+    {
+        LayerMask mask;
+        mask = (1 << 6);
+
+        //Centro, izquierda y derecha
+        RaycastHit2D hitU = Physics2D.Raycast(transform.position, Vector2.up, .05f, mask);
+        RaycastHit2D hitD = Physics2D.Raycast(transform.position, Vector2.down, .05f, mask);
+        RaycastHit2D hitL = Physics2D.Raycast(transform.position, Vector2.down, .05f, mask);
+        RaycastHit2D hitR = Physics2D.Raycast(transform.position, Vector2.down, .05f, mask);
+
+        if (hitU || hitD || hitL || hitR)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collided = collision.collider.gameObject;
         if (collided.tag == "Animal" && migrating)
         {
             MigrateHost(collided);
-        }
-        else if(migrating)
-        {
-            //Respawn to checkpoint, todo
         }
     }
 }
