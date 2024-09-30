@@ -5,8 +5,7 @@ using UnityEngine;
 public class Running : Host
 {
     float moveDirection;
-
-    void Start()
+    private void OnEnable()
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();

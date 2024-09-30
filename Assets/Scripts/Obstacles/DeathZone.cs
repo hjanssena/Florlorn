@@ -9,7 +9,7 @@ public class DeathZone : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Animal" && collision.gameObject.GetComponent<Host>().enabled == true)
+        if (collision.gameObject.tag == "Animal" && collision.gameObject.GetComponent<Host>().enabled == true && !collision.gameObject.GetComponent<Host>().isDead)
         {
             collision.gameObject.GetComponent<Host>().Death();
         }

@@ -23,10 +23,15 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         coll = GetComponent<CircleCollider2D>();
         Initiate();
+    }
+
+    private void OnEnable()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     }
 
     public void Initiate()
@@ -43,9 +48,11 @@ public class Player : MonoBehaviour
         if (onStasis)
         {
             AimSkillShot();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
         }
         else if (migrating)
         {
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
             Migrating();
             if (CheckShotCollision())
             {
@@ -55,8 +62,9 @@ public class Player : MonoBehaviour
         else
         {
             IsHostAlive();
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
 
-            if (Input.GetAxis("Stasis") > 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 EnterStasis();
             }
@@ -77,7 +85,7 @@ public class Player : MonoBehaviour
     void AimSkillShot()
     {
         progressBar.ChangeProgress(Time.time - stasisStart);
-        if (stasisStart + stasisDuration <= Time.time || Input.GetAxis("Fire") > 0)
+        if (stasisStart + stasisDuration <= Time.time || Input.GetKey(KeyCode.Mouse0))
         {
             Fire();
         }
@@ -152,7 +160,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collided = collision.collider.gameObject;
-        if (collided.tag == "Animal" && migrating)
+        if (collided.tag == "Animal" && migrating && !collided.GetComponent<Host>().isDead)
         {
             MigrateHost(collided);
         }

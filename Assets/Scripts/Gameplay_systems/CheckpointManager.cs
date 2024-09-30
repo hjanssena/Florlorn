@@ -55,6 +55,8 @@ public class CheckpointManager : MonoBehaviour
 
         for (int i = 0; i < animals.Length; i++)
         {
+            animals[i].SetActive(false);
+            animals[i].transform.rotation = Quaternion.identity;
             animals[i].transform.position = animalInitialPositions[i];
             animals[i].GetComponent<Animator>().SetBool("isDead", false);
             animals[i].GetComponent<Animator>().SetBool("isRunning", false);
@@ -64,7 +66,6 @@ public class CheckpointManager : MonoBehaviour
             animals[i].GetComponent<Animal>().enabled = true;
             animals[i].GetComponent<Animal>().SetMovDuration(0);
             animals[i].AddComponent<Rigidbody2D>();
-            animals[i].SetActive(false);
         }
 
         foreach(GameObject flower in GameObject.FindGameObjectsWithTag("Flower"))

@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(BoxCollider2D))]
 public class NextLevelTrigger : MonoBehaviour
 {
+    [SerializeField] string nextLevel;
+
     void NextLevel()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(nextLevel);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
