@@ -56,11 +56,21 @@ public class CheckpointManager : MonoBehaviour
         for (int i = 0; i < animals.Length; i++)
         {
             animals[i].transform.position = animalInitialPositions[i];
+            animals[i].GetComponent<Animator>().SetBool("isDead", false);
+            animals[i].GetComponent<Animator>().SetBool("isRunning", false);
+            animals[i].GetComponent<Animator>().SetBool("isJumping", false);
+            animals[i].GetComponent<Host>().isDead = false;
             animals[i].GetComponent<Host>().enabled = false;
             animals[i].GetComponent<Animal>().enabled = true;
             animals[i].GetComponent<Animal>().SetMovDuration(0);
             animals[i].AddComponent<Rigidbody2D>();
             animals[i].SetActive(false);
+        }
+
+        foreach(GameObject flower in GameObject.FindGameObjectsWithTag("Flower"))
+        {
+            flower.SetActive(false);
+            flower.transform.parent = null;
         }
 
         yield return new WaitForSeconds(1f);

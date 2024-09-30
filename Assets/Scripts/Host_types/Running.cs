@@ -29,60 +29,74 @@ public class Running : Host
 
     void Update()
     {
-        CheckLifeTime();
+        if (!isDead)
+        {
+            CheckLifeTime();
 
-        delta = Time.unscaledDeltaTime * Time.timeScale;
-        onFloor = CheckOnFloor();
-        rightWall = CheckRightWalls();
-        leftWall = CheckLeftWalls();
-        ceiling = CheckCeiling();
+            delta = Time.unscaledDeltaTime * Time.timeScale;
+            onFloor = CheckOnFloor();
+            rightWall = CheckRightWalls();
+            leftWall = CheckLeftWalls();
+            ceiling = CheckCeiling();
 
-        //xMovement
-        if (Input.GetAxis("Horizontal") > 0f)
-        {
-            moveDirection = 1;
-        }
-        else if (Input.GetAxis("Horizontal") < 0f)
-        {
-            moveDirection = -1;
-        }
-        Movement();
+            //xMovement
+            if (Input.GetAxis("Horizontal") > 0f)
+            {
+                moveDirection = 1;
+            }
+            else if (Input.GetAxis("Horizontal") < 0f)
+            {
+                moveDirection = -1;
+            }
+            Movement();
 
-        //yMovement
-        Gravity();
-        if (jumpPressed + jumpBuffer < Time.time)
-        {
-            jumpBuffered = false;
-        }
-        if (Input.GetAxis("Jump") > 0 && !jumpBuffered && !jumpInUse) //The buffer is to let the players input a jump some milliseconds before touching ground
-        {
-            jumpPressed = Time.time;
-            jumpBuffered = true;
-            jumpInUse = true;//JumpInUse is to make the getaxis act like a getkeydown
-        }
-        if (Input.GetAxis("Jump") > 0)
-        {
-            Jump();
+            //yMovement
+            Gravity();
+            if (jumpPressed + jumpBuffer < Time.time)
+            {
+                jumpBuffered = false;
+            }
+            if (Input.GetAxis("Jump") > 0 && !jumpBuffered && !jumpInUse) //The buffer is to let the players input a jump some milliseconds before touching ground
+            {
+                jumpPressed = Time.time;
+                jumpBuffered = true;
+                jumpInUse = true;//JumpInUse is to make the getaxis act like a getkeydown
+            }
+            if (Input.GetAxis("Jump") > 0)
+            {
+                Jump();
+            }
+            else
+            {
+                jumping = false;
+                jumpBuffered = false;
+                jumpInUse = false;
+            }
+
+            //movement
+            ApplyMovementLimits();
+            lastPosition = transform.position;
+            transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
+
+            if (!onFloor)
+            {
+                animator.SetBool("isJumping", true);
+            }
+            else
+            {
+                animator.SetBool("isJumping", false);
+            }
         }
         else
         {
-            jumping = false;
-            jumpBuffered = false;
-            jumpInUse = false;
-        }
-
-        //movement
-        ApplyMovementLimits();
-        lastPosition = transform.position;
-        transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
-
-        if (!onFloor)
-        {
-            animator.SetBool("isJumping", true);
-        }
-        else
-        {
-            animator.SetBool("isJumping", false);
+            onFloor = CheckOnFloor();
+            rightWall = CheckRightWalls();
+            leftWall = CheckLeftWalls();
+            ceiling = CheckCeiling();
+            animator.SetBool("isDead", true);
+            currentXSpeed = 0;
+            Gravity();
+            transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
         }
     }
 
@@ -91,9 +105,11 @@ public class Running : Host
         if (moveDirection > 0)
         {
             sr.flipX = false;
+            animator.SetBool("isRunning", true);
         }
         else if (moveDirection < 0)
         {
+            animator.SetBool("isRunning", true);
             sr.flipX = true;
         }
 
