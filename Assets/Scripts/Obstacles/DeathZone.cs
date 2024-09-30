@@ -15,6 +15,7 @@ public class DeathZone : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Player")
         {
+            collision.gameObject.GetComponent<Player>().shotLifetime = 100;
             collision.gameObject.GetComponent<Player>().dead = true;
         }
     }

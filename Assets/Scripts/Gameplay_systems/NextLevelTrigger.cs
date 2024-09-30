@@ -23,6 +23,7 @@ public class NextLevelTrigger : MonoBehaviour
             black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .01f);
         } while (black.color.a < 1);
         SceneManager.LoadScene(nextLevel);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

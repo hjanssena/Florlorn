@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xMovement: 1
-  maxDistanceFromOrigin: 5
+  maxDistanceFromOrigin: 0
   movDirection: 0
   movementDuration: 0
   raycastFloorLenght: 0

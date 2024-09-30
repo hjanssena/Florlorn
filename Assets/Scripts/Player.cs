@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] AudioClip hitSound;
 
-    [SerializeField] float shotLifetime;
+    [SerializeField] public float shotLifetime;
     float shotStart;
 
     private void OnEnable()
