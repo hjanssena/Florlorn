@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         onStasis = true;
         migrating = false;
         dead = false;
+        transform.rotation = Quaternion.identity;
     }
 
     void Update()

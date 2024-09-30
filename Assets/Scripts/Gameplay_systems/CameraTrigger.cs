@@ -31,7 +31,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 3)
+        if(collision.gameObject.tag == "Animal" && collision.gameObject.GetComponent<Host>().enabled == true)
         {
             camController.ChangeCameraMode(camMode, wantedX, wantedY, target);
 

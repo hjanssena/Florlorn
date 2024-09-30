@@ -217,11 +217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeDuration: 7
   isDead: 0
-  moveSpeed: 20
+  moveSpeed: 30
   currentXSpeed: 0
-  maxSpeed: 4.5
-  maxAirSpeed: 4.5
-  airMovementPenalty: 1
+  maxSpeed: 10
+  maxAirSpeed: 10
+  airMovementPenalty: 0.4
   stopMoveDrag: 15
   gravity: 18
   maxFallSpeed: 10

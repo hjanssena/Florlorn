@@ -33,9 +33,43 @@ public class CameraController : MonoBehaviour
     private float sizeChangeSpeed;
     private float size;
 
+    cameraMode ocamMode;
+    GameObject otarget;
+
+    float owantedX;
+    float owantedY;
+
+    float ooffsetX;
+    float ooffsetY;
+
+    float oxLimit;
+    float oyLimit;
+
+    float osize;
+    float osizeChangeSpeed;
+
     void Start()
     {
         cam = GetComponent<Camera>();
+        GetStartingProperties();
+    }
+
+    void GetStartingProperties()
+    {
+        ocamMode = camMode;
+        otarget = target;
+
+        owantedX = wantedX;
+        owantedY = wantedY;
+
+        ooffsetX = xOffset;
+        ooffsetY = yOffset;
+
+        oxLimit = xLimit;
+        oyLimit = yLimit;
+
+        osize = size;
+        osizeChangeSpeed = sizeChangeSpeed;
     }
 
     void Update()
@@ -244,5 +278,23 @@ public class CameraController : MonoBehaviour
         changingSize = true;
         this.size = size;
         sizeChangeSpeed = speed;
+    }
+
+    public void ResetValues()
+    {
+        camMode = ocamMode;
+        target = otarget;
+
+        wantedX = owantedX;
+        wantedY = owantedY;
+
+        xOffset = ooffsetX;
+        yOffset = ooffsetY;
+
+        xLimit = oxLimit;
+        yLimit = oyLimit;
+
+        size = osize;
+        sizeChangeSpeed = osizeChangeSpeed;
     }
 }

@@ -56,6 +56,8 @@ public class CheckpointManager : MonoBehaviour
         player.SetActive(false);
         player.GetComponent<Player>().Initiate();
 
+        GameObject.Find("Main Camera").GetComponent<CameraController>().ResetValues();
+
         foreach (GameObject flower in GameObject.FindGameObjectsWithTag("Flower"))
         {
             flower.SetActive(false);
