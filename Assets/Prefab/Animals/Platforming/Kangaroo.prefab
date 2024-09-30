@@ -177,17 +177,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeDuration: 7
   isDead: 0
-  moveSpeed: 20
+  moveSpeed: 4
   currentXSpeed: 0
-  maxSpeed: 4.5
-  maxAirSpeed: 7
-  airMovementPenalty: 2
+  maxSpeed: 4
+  maxAirSpeed: 4
+  airMovementPenalty: 4
   stopMoveDrag: 15
   gravity: 18
-  maxFallSpeed: 10
+  maxFallSpeed: 15
   jumpStartSpeed: 4
   jumpSustainedSpeed: 28
-  maxJumpForce: 5
+  maxJumpForce: 12
   jumpForceApplied: 0
   jumpBuffer: 1
   raycastLateralLenght: 0.4
