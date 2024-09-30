@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dccc8032851fca0a3eec26261ffb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeDuration: 100
+  lifeDuration: 7
   isDead: 0
   moveSpeed: 4
   currentXSpeed: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   stopMoveDrag: 3
   gravity: 3
   maxFallSpeed: 2.5
-  jumpStartSpeed: 1.5
+  jumpStartSpeed: 2
   jumpSustainedSpeed: 0.5
   maxJumpForce: 50
   jumpForceApplied: 0
