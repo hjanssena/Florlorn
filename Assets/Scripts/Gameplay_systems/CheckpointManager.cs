@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -25,6 +26,19 @@ public class CheckpointManager : MonoBehaviour
         {
             resetting = true;
             StartCoroutine(ResetLevel());
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            try
+            {
+                SceneManager.MoveGameObjectToScene(GameObject.Find("MusicPlayer"), SceneManager.GetActiveScene());
+            }
+            catch
+            {
+
+            }
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

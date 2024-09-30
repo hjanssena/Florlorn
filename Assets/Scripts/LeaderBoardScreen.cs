@@ -45,7 +45,14 @@ public class LeaderBoardScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            SceneManager.MoveGameObjectToScene(GameObject.Find("MusicPlayer"), SceneManager.GetActiveScene());
+            try
+            {
+                SceneManager.MoveGameObjectToScene(GameObject.Find("MusicPlayer"), SceneManager.GetActiveScene());
+            }
+            catch
+            {
+
+            }
             SceneManager.LoadScene("MainMenu");
         }
     }
