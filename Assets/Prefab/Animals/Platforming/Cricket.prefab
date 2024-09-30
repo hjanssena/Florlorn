@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeDuration: 7
   isDead: 0
-  moveSpeed: 20
+  moveSpeed: 15
   currentXSpeed: 0
   maxSpeed: 4.5
   maxAirSpeed: 4.5
@@ -186,7 +186,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpStartSpeed: 4
   jumpSustainedSpeed: 28
-  maxJumpForce: 5
+  maxJumpForce: 2
   jumpForceApplied: 0
   jumpBuffer: 1
   raycastLateralLenght: 0.19

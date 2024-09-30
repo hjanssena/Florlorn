@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xMovement: 1
-  maxDistanceFromOrigin: 5
+  maxDistanceFromOrigin: 1
   movDirection: 0
   movementDuration: 0
   raycastFloorLenght: 0.14
@@ -227,7 +227,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpStartSpeed: 4
   jumpSustainedSpeed: 28
-  maxJumpForce: 5
+  maxJumpForce: 0.7
   jumpForceApplied: 0
   jumpBuffer: 1
   raycastLateralLenght: 0.2
