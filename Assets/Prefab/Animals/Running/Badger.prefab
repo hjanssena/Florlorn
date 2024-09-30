@@ -227,7 +227,7 @@ MonoBehaviour:
   maxFallSpeed: 10
   jumpStartSpeed: 4
   jumpSustainedSpeed: 28
-  maxJumpForce: 5
+  maxJumpForce: 3
   jumpForceApplied: 0
   jumpBuffer: 1
   raycastLateralLenght: 0.385
