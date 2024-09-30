@@ -930,6 +930,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7305239422498425408, guid: 6442f23bb969edc479cfa30c8821cd18, type: 3}
+      propertyPath: shotLifetime
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1510,6 +1514,10 @@ PrefabInstance:
     - target: {fileID: 4859261269310307903, guid: 7ee98153488d5cf4eb439c8dc4fbaaf7, type: 3}
       propertyPath: m_Name
       value: MusicPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5947383133580840564, guid: 7ee98153488d5cf4eb439c8dc4fbaaf7, type: 3}
+      propertyPath: m_Volume
+      value: 0.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
