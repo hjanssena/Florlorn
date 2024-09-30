@@ -53,6 +53,12 @@ public class CheckpointManager : MonoBehaviour
         player.SetActive(false);
         player.GetComponent<Player>().Initiate();
 
+        foreach (GameObject flower in GameObject.FindGameObjectsWithTag("Flower"))
+        {
+            flower.SetActive(false);
+            flower.transform.parent = null;
+        }
+
         for (int i = 0; i < animals.Length; i++)
         {
             animals[i].SetActive(false);
@@ -66,12 +72,6 @@ public class CheckpointManager : MonoBehaviour
             animals[i].GetComponent<Animal>().enabled = true;
             animals[i].GetComponent<Animal>().SetMovDuration(0);
             animals[i].AddComponent<Rigidbody2D>();
-        }
-
-        foreach(GameObject flower in GameObject.FindGameObjectsWithTag("Flower"))
-        {
-            flower.SetActive(false);
-            flower.transform.parent = null;
         }
 
         yield return new WaitForSeconds(1f);

@@ -54,8 +54,8 @@ public abstract class Host : MonoBehaviour
 
     //Sounds
     [Header("Sound")]
-    //[SerializeField] AudioClip stepSound;
-    //[SerializeField] AudioClip jumpSound;
+    [SerializeField] AudioClip hostSound;
+    [SerializeField] AudioClip jumpSound;
     protected AudioSource audioPlayer;
     protected SpriteRenderer sprite;
     protected ProgressBar progressBar;
@@ -81,6 +81,7 @@ public abstract class Host : MonoBehaviour
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         progressBar.SetMax(lifeDuration);
         lifeStart = Time.time;
+        audioPlayer.PlayOneShot(hostSound);
     }
 
     public void ExpireHost()
@@ -161,6 +162,7 @@ public abstract class Host : MonoBehaviour
             jumpForceApplied = 0;
             jumping = true;
             jumpBuffered = false;
+            audioPlayer.PlayOneShot(jumpSound);
         }
         //Aditional force if player holds jump axis
         if (jumping && maxJumpForce > jumpForceApplied)

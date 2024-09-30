@@ -21,8 +21,14 @@ public class Player : MonoBehaviour
 
     CircleCollider2D coll;
 
+    AudioSource audioPlayer;
+    [SerializeField] AudioClip deadSound;
+    [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioClip hitSound;
+
     void Start()
     {
+        audioPlayer = GetComponent<AudioSource>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         coll = GetComponent<CircleCollider2D>();
         Initiate();
@@ -56,6 +62,10 @@ public class Player : MonoBehaviour
             Migrating();
             if (CheckShotCollision())
             {
+                if (!dead)
+                {
+                    audioPlayer.PlayOneShot(deadSound);
+                }
                 dead = true;
             }
         }
@@ -101,6 +111,7 @@ public class Player : MonoBehaviour
         mouseWorldPos.z = 0;
         fireDirection = mouseWorldPos - transform.position;
         fireDirection.Normalize();
+        audioPlayer.PlayOneShot(shootSound);
     }
 
     void Migrating()
@@ -118,6 +129,7 @@ public class Player : MonoBehaviour
         newHost.GetComponent<Host>().SetAsHost();
         transform.position = newHost.transform.position;
         migrating = false;
+        audioPlayer.PlayOneShot(hitSound);
     }
     
     void IsHostAlive()
