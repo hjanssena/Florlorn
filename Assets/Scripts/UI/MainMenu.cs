@@ -35,7 +35,7 @@ public class MainMenu : MonoBehaviour
         do
         {
             yield return new WaitForSeconds(.01f);
-            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .0027f);
+            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .005f);
         } while (black.color.a < 1);
 
         SceneManager.LoadScene("Lvl_1");

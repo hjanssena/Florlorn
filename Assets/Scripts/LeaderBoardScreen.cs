@@ -18,9 +18,9 @@ public class LeaderBoardScreen : MonoBehaviour
 
         TimeSpan total = new TimeSpan();
         int i = 1;
-        foreach(TimeSpan time in TimeKeeping.timeList)
+        foreach (TimeSpan time in TimeKeeping.timeList)
         {
-            timeBoard.text += "Level "+ i + ": " + time.ToString("mm':'ss") + "\n";
+            timeBoard.text += "Level " + i + ": " + time.ToString("mm':'ss") + "\n";
             total += time;
             i++;
         }
@@ -36,7 +36,7 @@ public class LeaderBoardScreen : MonoBehaviour
         i = 1;
         foreach (TimeSpan totalTime in TimeKeeping.totalTimes)
         {
-            leaderBoard.text += i + ":  "+ totalTime.ToString("mm':'ss") + "\n";
+            leaderBoard.text += i + ":  " + totalTime.ToString("mm':'ss") + "\n";
             i++;
         }
     }
@@ -45,15 +45,8 @@ public class LeaderBoardScreen : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            try
-            {
-                SceneManager.MoveGameObjectToScene(GameObject.Find("MusicPlayer"), SceneManager.GetActiveScene());
-            }
-            catch
-            {
 
-            }
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("EndScene");
         }
     }
 }
