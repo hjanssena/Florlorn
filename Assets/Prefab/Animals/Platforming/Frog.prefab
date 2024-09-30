@@ -179,7 +179,7 @@ MonoBehaviour:
   moveSpeed: 6
   currentXSpeed: 0
   maxSpeed: 2.5
-  maxAirSpeed: 5.5
+  maxAirSpeed: 5
   airMovementPenalty: 2
   stopMoveDrag: 15
   gravity: 18
