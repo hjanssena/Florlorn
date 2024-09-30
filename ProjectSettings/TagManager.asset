@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Animal
   - BlackScreen
+  - Flower
   layers:
   - Default
   - TransparentFX

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Flying : Host
 {
-
-    void Start()
+    private void OnEnable()
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -29,7 +28,7 @@ public class Flying : Host
             ceiling = CheckCeiling();
 
             //xMovement
-            if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f)
+            if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") < 0f)
             {
                 Movement();
             }
