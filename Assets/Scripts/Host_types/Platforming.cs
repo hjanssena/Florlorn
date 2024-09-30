@@ -6,6 +6,7 @@ public class Platforming : Host
 {
     private void OnEnable()
     {
+        audioPlayer = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();

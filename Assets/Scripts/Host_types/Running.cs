@@ -7,6 +7,7 @@ public class Running : Host
     float moveDirection;
     private void OnEnable()
     {
+        audioPlayer = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         coll = GetComponent<BoxCollider2D>();

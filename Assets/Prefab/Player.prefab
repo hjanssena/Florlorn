@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.9761536, y: -1.7671871, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: c041aa1b7a4afb941a088aed76f81499, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4bda653d46d8eb44c80480662881aba1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -145,3 +145,6 @@ MonoBehaviour:
   - {fileID: 2248537050790746573, guid: 821ae911bc5622f4ab1086b21624f43d, type: 3}
   - {fileID: 3362373202236634042, guid: 1aaf4178b5848704aa73e28c76e6958c, type: 3}
   - {fileID: 4676385082346963273, guid: 63718b24ca431c6428ad3ce1d6868fb7, type: 3}
+  deadSound: {fileID: 8300000, guid: d50cb997e86ebaa49addcde1455b1d23, type: 3}
+  shootSound: {fileID: 8300000, guid: b2b32f43880885f419bd6ac664ffb11e, type: 3}
+  hitSound: {fileID: 8300000, guid: 14ae5f2ca15bd5b48ac8989d081e5456, type: 3}
