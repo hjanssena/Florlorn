@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class LeaderBoardScreen : MonoBehaviour
 {
@@ -28,11 +30,23 @@ public class LeaderBoardScreen : MonoBehaviour
         TimeKeeping.SaveTotalTime();
         TimeKeeping.totalTimes.Sort();
 
+        leaderBoard = GameObject.Find("Leaderboard").GetComponent<TMP_Text>();
+        leaderBoard.text = "\n";
+
         i = 1;
         foreach (TimeSpan totalTime in TimeKeeping.totalTimes)
         {
-            timeBoard.text += i + ":  "+ totalTime.ToString("mm':'ss") + "\n";
+            leaderBoard.text += i + ":  "+ totalTime.ToString("mm':'ss") + "\n";
             i++;
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.MoveGameObjectToScene(GameObject.Find("MusicPlayer"), SceneManager.GetActiveScene());
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
