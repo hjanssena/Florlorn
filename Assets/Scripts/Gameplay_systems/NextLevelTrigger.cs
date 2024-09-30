@@ -2,14 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Unity.Collections.AllocatorManager;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class NextLevelTrigger : MonoBehaviour
 {
     [SerializeField] string nextLevel;
+    SpriteRenderer black;
 
-    void NextLevel()
+    private void Start()
     {
+        black = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<SpriteRenderer>();
+    }
+
+    IEnumerator NextLevel()
+    {
+        do
+        {
+            yield return new WaitForSeconds(.001f);
+            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .01f);
+        } while (black.color.a < 1);
         SceneManager.LoadScene(nextLevel);
     }
 
@@ -17,7 +29,7 @@ public class NextLevelTrigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            NextLevel();
+            StartCoroutine(NextLevel());
         }
     }
 }

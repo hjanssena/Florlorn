@@ -83,7 +83,14 @@ public class Platforming : Host
             ceiling = CheckCeiling();
             animator.SetBool("isDead", true);
             currentXSpeed = 0;
-            Gravity();
+            if (!onFloor)
+            {
+                currentYSpeed = -5;
+            }
+            else
+            {
+                currentYSpeed = 0;
+            }
             transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
         }
     }

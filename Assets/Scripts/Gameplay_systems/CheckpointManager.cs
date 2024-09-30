@@ -9,18 +9,21 @@ public class CheckpointManager : MonoBehaviour
     Vector2 playerInitialPosition;
     GameObject[] animals;
     List<Vector2> animalInitialPositions;
+    bool resetting;
 
     void Start()
     {
         black = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<SpriteRenderer>();
         RegisterPlayer();
         RegisterAnimals();
+        resetting = false;
     }
 
     void Update()
     {
-        if (player.GetComponent<Player>().dead)
+        if (player.GetComponent<Player>().dead && !resetting)
         {
+            resetting = true;
             StartCoroutine(ResetLevel());
         }
     }
@@ -45,8 +48,8 @@ public class CheckpointManager : MonoBehaviour
     {
         do
         {
-            yield return new WaitForSeconds(.1f);
-            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .005f);
+            yield return new WaitForSeconds(.008f);
+            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .045f);
         } while (black.color.a < 1);
         
         player.transform.position = playerInitialPosition;
@@ -84,9 +87,10 @@ public class CheckpointManager : MonoBehaviour
 
         do
         {
-            yield return new WaitForSeconds(.1f);
-            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a - .005f);
+            yield return new WaitForSeconds(.008f);
+            black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a - .045f);
         } while (black.color.a > 0);
 
+        resetting = false;
     }
 }
