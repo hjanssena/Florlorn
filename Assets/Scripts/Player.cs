@@ -16,12 +16,14 @@ public class Player : MonoBehaviour
     public bool dead;
     protected ProgressBar progressBar;
 
-
+    protected SpriteRenderer sr;
+    [SerializeField] List<GameObject> flowers;
 
     CircleCollider2D coll;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         coll = GetComponent<CircleCollider2D>();
         Initiate();
@@ -95,7 +97,10 @@ public class Player : MonoBehaviour
 
     void Migrating()
     {
-        transform.Translate(fireDirection * skillShotSpeed * Time.deltaTime);
+        if (!dead)
+        {
+            transform.Translate(fireDirection * skillShotSpeed * Time.deltaTime);
+        }
     }
 
     void MigrateHost(GameObject newHost)
@@ -113,6 +118,14 @@ public class Player : MonoBehaviour
         {
             EnterStasis();
         }
+    }
+
+    public GameObject SpawnFlower()
+    {
+        int rng = Random.Range(0, 6);
+        GameObject flower = Instantiate(flowers[rng]);
+        flower.transform.position = transform.position + new Vector3(0, .2f, 0);
+        return flower;
     }
 
     protected bool CheckShotCollision()
