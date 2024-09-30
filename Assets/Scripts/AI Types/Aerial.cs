@@ -14,11 +14,11 @@ public class Aerial : Animal
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        startingPosition = transform.position;
     }
 
     private void OnEnable()
     {
+        startingPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
     }

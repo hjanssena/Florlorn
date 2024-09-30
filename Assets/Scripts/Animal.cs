@@ -51,46 +51,58 @@ public abstract class Animal : MonoBehaviour
 
     protected void SetPath()
     {
-        if (!repositioning)
+        if(maxDistanceFromOrigin != 0)
         {
-            if (movementDuration + movementStart < Time.time)
+            if (!repositioning)
             {
-                movementDuration = Random.Range(1, 4);
-                movementStart = Time.time;
-                movDirection = Random.Range(-1, 2);
-            }
-
-            float distanceFromOrigin = Vector2.Distance(transform.position, startingPosition);
-            if (distanceFromOrigin > maxDistanceFromOrigin)
-            {
-                movementDuration = 2;
-                movDirection = -movDirection;
-                repositioning = true;
-            }
-
-            if (movDirection == 1)
-            {
-                if (!floorOnRight || wallOnRight || spikeOnRight)
+                if (movementDuration + movementStart < Time.time)
                 {
-                    movementDuration = 0;
+                    movementDuration = Random.Range(1, 4);
+                    movementStart = Time.time;
+                    movDirection = Random.Range(-1, 2);
+                }
+
+                float distanceFromOrigin = Vector2.Distance(transform.position, startingPosition);
+                if (distanceFromOrigin > maxDistanceFromOrigin)
+                {
+                    movementDuration = 2;
+                    movDirection = -movDirection;
+                    repositioning = true;
+                }
+
+                if (movDirection == 1)
+                {
+                    if (!floorOnRight || wallOnRight || spikeOnRight)
+                    {
+                        movementDuration = 0;
+                    }
+                }
+                if (movDirection == -1)
+                {
+                    if (!floorOnLeft || wallOnLeft || spikeOnLeft)
+                    {
+                        movementDuration = 0;
+                    }
                 }
             }
-            if (movDirection == -1)
+            else
             {
-                if (!floorOnLeft || wallOnLeft || spikeOnLeft)
+                if (movementDuration + movementStart < Time.time)
                 {
-                    movementDuration = 0;
+                    movementDuration = Random.Range(1, 4);
+                    movementStart = Time.time;
+
+                    if (transform.position.x - startingPosition.x > 0)
+                    {
+                        movDirection = Random.Range(0, 2);
+                    }
+                    else
+                    {
+                        movDirection = Random.Range(-1, 1);
+                    }
+
+                    repositioning = false;
                 }
-            }
-        }
-        else
-        {
-            if (movementDuration + movementStart < Time.time)
-            {
-                movementDuration = Random.Range(1, 4);
-                movementStart = Time.time;
-                movDirection = Random.Range(-1, 2);
-                repositioning = false;
             }
         }
     }

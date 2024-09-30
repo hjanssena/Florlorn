@@ -1018,7 +1018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5734029189159024024, guid: 8c753b36a25d9614fa38875154979674, type: 3}
       propertyPath: nextLevel
-      value: Lvl_1
+      value: ScoreBoard
       objectReference: {fileID: 0}
     - target: {fileID: 6542093583532403169, guid: 8c753b36a25d9614fa38875154979674, type: 3}
       propertyPath: m_LocalPosition.x
