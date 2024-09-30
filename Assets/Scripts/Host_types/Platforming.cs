@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platforming : Host
 {
-    void Start()
+    private void OnEnable()
     {
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -17,59 +17,73 @@ public class Platforming : Host
 
     void Update()
     {
-        CheckLifeTime();
-
-        delta = Time.unscaledDeltaTime * Time.timeScale;
-        onFloor = CheckOnFloor();
-        rightWall = CheckRightWalls();
-        leftWall = CheckLeftWalls();
-        ceiling = CheckCeiling();
-
-        //xMovement
-        if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f)
+        if (!isDead)
         {
-            Movement();
+            CheckLifeTime();
+
+            delta = Time.unscaledDeltaTime * Time.timeScale;
+            onFloor = CheckOnFloor();
+            rightWall = CheckRightWalls();
+            leftWall = CheckLeftWalls();
+            ceiling = CheckCeiling();
+
+            //xMovement
+            if (Input.GetAxis("Horizontal") > 0f || Input.GetAxis("Horizontal") < 0f)
+            {
+                Movement();
+            }
+            else
+            {
+                StopMovement();
+            }
+
+            //yMovement
+            Gravity();
+            if (jumpPressed + jumpBuffer < Time.time)
+            {
+                jumpBuffered = false;
+            }
+            if (Input.GetAxis("Jump") > 0 && !jumpBuffered && !jumpInUse) //The buffer is to let the players input a jump some milliseconds before touching ground
+            {
+                jumpPressed = Time.time;
+                jumpBuffered = true;
+                jumpInUse = true;//JumpInUse is to make the getaxis act like a getkeydown
+            }
+            if (Input.GetAxis("Jump") > 0)
+            {
+                Jump();
+            }
+            else
+            {
+                jumping = false;
+                jumpBuffered = false;
+                jumpInUse = false;
+            }
+
+            //movement
+            ApplyMovementLimits();
+            lastPosition = transform.position;
+            transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
+
+            if (!onFloor)
+            {
+                animator.SetBool("isJumping", true);
+            }
+            else
+            {
+                animator.SetBool("isJumping", false);
+            }
         }
         else
         {
-            StopMovement();
-        }
-
-        //yMovement
-        Gravity();
-        if (jumpPressed + jumpBuffer < Time.time)
-        {
-            jumpBuffered = false;
-        }
-        if (Input.GetAxis("Jump") > 0 && !jumpBuffered && !jumpInUse) //The buffer is to let the players input a jump some milliseconds before touching ground
-        {
-            jumpPressed = Time.time;
-            jumpBuffered = true;
-            jumpInUse = true;//JumpInUse is to make the getaxis act like a getkeydown
-        }
-        if (Input.GetAxis("Jump") > 0)
-        {
-            Jump();
-        }
-        else
-        {
-            jumping = false;
-            jumpBuffered = false;
-            jumpInUse = false;
-        }
-
-        //movement
-        ApplyMovementLimits();
-        lastPosition = transform.position;
-        transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
-
-        if (!onFloor)
-        {
-            animator.SetBool("isJumping", true);
-        }
-        else
-        {
-            animator.SetBool("isJumping", false);
+            onFloor = CheckOnFloor();
+            rightWall = CheckRightWalls();
+            leftWall = CheckLeftWalls();
+            ceiling = CheckCeiling();
+            animator.SetBool("isDead", true);
+            currentXSpeed = 0;
+            Gravity();
+            transform.Translate(currentXSpeed * delta, currentYSpeed * delta, 0);
         }
     }
 

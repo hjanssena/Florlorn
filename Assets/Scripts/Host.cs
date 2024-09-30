@@ -7,6 +7,7 @@ public abstract class Host : MonoBehaviour
 {
     [SerializeField] private float lifeDuration;
     private float lifeStart;
+    public bool isDead;
     protected Rigidbody2D rb;
     protected BoxCollider2D coll;
 
@@ -38,8 +39,6 @@ public abstract class Host : MonoBehaviour
     protected bool jumpBuffered;
     protected float jumpPressed;
 
-
-
     //Walls and floor detection
     protected bool onFloor;
     protected bool rightWall;
@@ -52,8 +51,6 @@ public abstract class Host : MonoBehaviour
     [SerializeField] protected float raycastLateralOffset;
     [SerializeField] protected float raycastVerticalLenght;
     [SerializeField] protected float raycastVerticalOffset;
-
-
 
     //Sounds
     [Header("Sound")]
@@ -89,12 +86,15 @@ public abstract class Host : MonoBehaviour
     public void ExpireHost()
     {
         GameObject.FindGameObjectWithTag("Player").transform.parent = null;
-        gameObject.SetActive(false);
+        GameObject flower = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().SpawnFlower();
+        flower.transform.parent = transform;
+        isDead = true;
     }
 
     public void Death()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().dead = true;
+        isDead = true;
     }
 
     protected void StopMovement() //When player is not pressing horizontal axis, apply force to stop the movement

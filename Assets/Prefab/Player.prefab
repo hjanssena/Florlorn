@@ -138,3 +138,10 @@ MonoBehaviour:
   onStasis: 0
   migrating: 0
   dead: 0
+  flowers:
+  - {fileID: 3188161012787146306, guid: 29cf24a6c7ba6b3439b70a83d397827c, type: 3}
+  - {fileID: 5337824541238806259, guid: 6c441e313315ecd499f7e54c28f501d1, type: 3}
+  - {fileID: 7625615802773020593, guid: a4472d60e6f026e4a8b70ed9c5d60a06, type: 3}
+  - {fileID: 2248537050790746573, guid: 821ae911bc5622f4ab1086b21624f43d, type: 3}
+  - {fileID: 3362373202236634042, guid: 1aaf4178b5848704aa73e28c76e6958c, type: 3}
+  - {fileID: 4676385082346963273, guid: 63718b24ca431c6428ad3ce1d6868fb7, type: 3}
