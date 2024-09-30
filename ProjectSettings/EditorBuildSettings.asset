@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/levels/Lvl_5.unity
     guid: dd25703b1918f7840894a05ab6a81bad
   - enabled: 1
+    path: Assets/Scenes/levels/Lvl_6.unity
+    guid: c2fdec118929fa44fb59fde9603f2cbb
+  - enabled: 1
     path: Assets/Scenes/ScoreBoard.unity
     guid: 582c7cc8af765404481921457902fbba
   - enabled: 0

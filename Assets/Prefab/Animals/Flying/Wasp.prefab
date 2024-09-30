@@ -184,7 +184,7 @@ MonoBehaviour:
   stopMoveDrag: 3
   gravity: 3
   maxFallSpeed: 2.5
-  jumpStartSpeed: 1.5
+  jumpStartSpeed: 1
   jumpSustainedSpeed: 0.5
   maxJumpForce: 50
   jumpForceApplied: 0
