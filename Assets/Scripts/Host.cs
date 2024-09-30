@@ -71,6 +71,7 @@ public abstract class Host : MonoBehaviour
         if (lifeDuration + lifeStart < Time.time)
         {
             ExpireHost();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().dead = true;
         }
     }
 

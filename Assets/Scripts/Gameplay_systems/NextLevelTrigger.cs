@@ -31,5 +31,9 @@ public class NextLevelTrigger : MonoBehaviour
         {
             StartCoroutine(NextLevel());
         }
+        if (collision.gameObject.tag == "Animal" && collision.gameObject.GetComponent<Host>().enabled == true)
+        {
+            StartCoroutine(NextLevel());
+        }
     }
 }

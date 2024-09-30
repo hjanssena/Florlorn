@@ -149,6 +149,7 @@ MonoBehaviour:
   deadSound: {fileID: 8300000, guid: d50cb997e86ebaa49addcde1455b1d23, type: 3}
   shootSound: {fileID: 8300000, guid: b2b32f43880885f419bd6ac664ffb11e, type: 3}
   hitSound: {fileID: 8300000, guid: 14ae5f2ca15bd5b48ac8989d081e5456, type: 3}
+  shotLifetime: 1.5
 --- !u!82 &2120816300710425382
 AudioSource:
   m_ObjectHideFlags: 0

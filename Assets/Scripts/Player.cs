@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] AudioClip hitSound;
 
+    [SerializeField] float shotLifetime;
+    float shotStart;
+
     private void OnEnable()
     {
         audioPlayer = GetComponent<AudioSource>();
@@ -102,6 +105,7 @@ public class Player : MonoBehaviour
         coll.enabled = true;
         onStasis = false;
         migrating = true;
+        shotStart = Time.time;
 
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;
@@ -112,9 +116,13 @@ public class Player : MonoBehaviour
 
     void Migrating()
     {
-        if (!dead)
+        if (!dead && shotLifetime + shotStart > Time.time)
         {
             transform.Translate(fireDirection * skillShotSpeed * Time.deltaTime);
+        }
+        if (!dead && shotLifetime + shotStart < Time.time)
+        {
+            dead = true;
         }
     }
 
