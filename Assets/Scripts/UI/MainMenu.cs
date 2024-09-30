@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         audioPlayer = GetComponent<AudioSource>();
 
-        TimeKeeping.totalTimes = new List<System.TimeSpan>();
+        TimeKeeping.timeList = new List<System.TimeSpan>();
         black = GameObject.Find("Black").GetComponent<Image>();
     }
 
@@ -38,6 +38,6 @@ public class MainMenu : MonoBehaviour
             black.color = new Color(black.color.r, black.color.g, black.color.b, black.color.a + .0027f);
         } while (black.color.a < 1);
 
-        SceneManager.LoadScene("Sandbox");
+        SceneManager.LoadScene("Lvl_1");
     }
 }
