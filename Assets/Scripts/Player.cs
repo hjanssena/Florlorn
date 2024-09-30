@@ -26,16 +26,12 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip shootSound;
     [SerializeField] AudioClip hitSound;
 
-    void Start()
+    private void OnEnable()
     {
         audioPlayer = GetComponent<AudioSource>();
         progressBar = GameObject.Find("ProgressBar").GetComponent<ProgressBar>();
         coll = GetComponent<CircleCollider2D>();
         Initiate();
-    }
-
-    private void OnEnable()
-    {
         sr = GetComponent<SpriteRenderer>();
         sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1);
     }
