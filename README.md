@@ -1,10 +1,10 @@
-Play at https://hugolvna.itch.io/florlorn !!
+Play at [itch.io](https://hugolvna.itch.io/florlorn)!
 
 You control the first seed of a mysterious plant-like organism, you must quickly travel from host to host, scavenging their remains to nurture the flowers of your species.
 
 An infected creature can be controlled briefly before dying due to the infection. Change hosts before their time is over to avoid getting stuck.
 
-Submitted for SpeedJam #6.
+Submitted for [SpeedJam #6](https://itch.io/jam/speedjam7/rate/3008122).
 
 Controls:
 
